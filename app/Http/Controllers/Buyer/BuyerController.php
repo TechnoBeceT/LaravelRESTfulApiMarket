@@ -23,12 +23,12 @@ class BuyerController extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param Buyer $buyer
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Buyer $buyer)
     {
-        $buyer = Buyer::has('transactions')->findOrfail($id);
+        //$buyer = Buyer::has('transactions')->findOrfail($id);
 
         return $this->showOne($buyer);
     }
