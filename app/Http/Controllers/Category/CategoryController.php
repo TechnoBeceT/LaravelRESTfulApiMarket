@@ -21,16 +21,6 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -63,17 +53,6 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Category $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -82,7 +61,18 @@ class CategoryController extends ApiController
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->fill($request->only([
+            'name',
+            'description',
+        ]));
+
+        if ($category->isClean()) {
+            return $this->errorResponse('You need to specify any different value to update.', 422);
+        }
+
+        $category->save();
+
+        return $this->showOne($category);
     }
 
     /**
