@@ -17,9 +17,9 @@ class CategorySellerController extends ApiController
         $sellers = $category->products()
             ->with('seller')->get()
             ->pluck('seller')
-            ->unique()
+            ->unique('id')
             ->values();
-        
+
         return $this->showAll($sellers);
     }
 }
