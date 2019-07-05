@@ -25,6 +25,11 @@ class DatabaseSeeder extends Seeder
         DB::table('category_product')->truncate();
         DB::statement('SET session_replication_role = origin');
 
+        User::flushEventListeners();
+        Category::flushEventListeners();
+        Product::flushEventListeners();
+        Transaction::flushEventListeners();
+
         $usersQuantity = 1000;
         $categoriesQuantity = 30;
         $productsQuantity = 1000;
