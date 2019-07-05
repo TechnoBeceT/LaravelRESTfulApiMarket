@@ -24,4 +24,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(Seller::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
