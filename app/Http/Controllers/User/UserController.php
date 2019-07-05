@@ -135,13 +135,20 @@ class UserController extends ApiController
         return $this->showMessage('The account has been verified succesfully');
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function resend(User $user)
     {
         if ($user->isVerified()) {
             return $this->errorResponse('This user already verified.', 409);
         }
 
-        Mail::to($user)->send(New UserCreated($user));
+        retry(5, function () use ($user) {
+            Mail::to($user)->send(New UserCreated($user));
+        }, 100);
 
         return $this->showMessage('The verification email has been resend');
     }
