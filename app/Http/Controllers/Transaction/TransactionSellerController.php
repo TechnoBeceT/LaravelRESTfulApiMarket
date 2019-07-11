@@ -8,6 +8,13 @@ use App\Http\Controllers\ApiController;
 class TransactionSellerController extends ApiController
 {
     /**
+     * TransactionSellerController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

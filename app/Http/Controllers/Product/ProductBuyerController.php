@@ -8,6 +8,14 @@ use App\Http\Controllers\ApiController;
 class ProductBuyerController extends ApiController
 {
     /**
+     * ProductBuyerController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param Product $product

@@ -9,6 +9,14 @@ use App\Http\Controllers\ApiController;
 class BuyerController extends ApiController
 {
     /**
+     * BuyerController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

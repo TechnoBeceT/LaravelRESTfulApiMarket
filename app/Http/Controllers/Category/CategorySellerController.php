@@ -8,6 +8,14 @@ use App\Http\Controllers\ApiController;
 class CategorySellerController extends ApiController
 {
     /**
+     * CategorySellerController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
